@@ -1,0 +1,131 @@
+
+.wpsClient-roundedArea {
+	border: 1px solid #555;
+	
+	background-color: #eee;
+	background-color: rgba(255,255,255,0.8);
+	padding: 20px;
+	margin-bottom: 20px;
+	
+	-webkit-border-radius: 6px;
+	-khtml-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	
+	box-shadow: 0 0 5px rgba(0,0,0,0.2);
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.wpsClient-panel {
+	min-height: 300px !important;
+	background-color: #eee;
+}
+
+.wpsClient-panel dd{
+	margin-bottom: 5px;
+}
+
+.formLabel {
+	margin-top:10px;
+}
+
+.algorithmFormArea input {
+	width: 400px;
+}
+
+.addMoreFields {
+	display: inline-block;;
+	width: 14px;
+	height: 14px;
+	background: url(../img/add.png);
+}
+
+.removeFields {
+	display: inline-block;;
+	width: 14px;
+	height: 14px;
+	background: url(../img/remove.png);
+}
+
+.fileUrl {
+	margin-right: 20px;
+}
+
+.fileUrl:hover {
+	background-color: #d9e2f8;
+}
+
+/* to enlarge the xml result when hover
+.xmlResult:hover {
+	width: 1200px;
+	padding-right: 20px;
+}*/
+
+.wpsClient-bigPreloader {
+	background-image: url(../img/bigPreloader.gif);
+	background-repeat: no-repeat;
+	width: 160px;
+	height: 24px;
+}
+
+/* EJS ELEMENTS */
+
+#jobsTable {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0 5px;
+}
+#jobsTable tr{ background-color: #ddd; }
+
+.titleCell { width:66% }
+.statusCell { width: 34% }
+
+.jobProgress {
+	margin: 0px 5px 0px 5px;
+	height: 15px;
+	line-height: 16px;
+}
+
+.jobProgress .jobProgressMessage {
+	width: 100%; line-height: 14px;font-size: 11.844px; font-weight: bold;
+}
+
+
+
+/* NOTIFICATOR */
+
+.bb-alert {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	margin-bottom: 0;
+	font-size: 12px;
+	padding: 1em 1.3em;
+}
+.bb-alert.alert-info {
+	color: #3a87ad;
+	background-color: #d9edf7;
+	border-color: #bce8f1;
+}
+
+
+/* EXTERNAL LINKS */
+.wpsClient-link {
+	font-size: 11px;
+	font-weight: 200;
+	margin-right: 5px;
+	color: #666;
+}
+.awpsClient-link {
+	font-size: 11px;
+	background-color: rgb(221, 220, 220);
+	color: black;
+	border-radius: 6px;
+	padding: 1px 5px;
+	margin-top: 15px;
+}
+.awpsClient-link a {
+	color:black;
+}
+

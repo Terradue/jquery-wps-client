@@ -1,0 +1,37 @@
+<%	
+if (this.attr("length")!=0) {
+%>
+<h4><i class='icon-tasks'></i> Last Jobs</h4>
+<table id="jobsTable">
+	<% this.each(function(job) {
+		var title = job.attr("title"),
+			jobName = job.attr("jobName"),
+			status = job.attr("status"); 
+		%>
+	<tr>
+		<td class='titleCell'>
+			<small><a <%= (el) -> el.data('job', job) %> href="javascript://" class="selectJob"><%= jobName %></a></small>
+		</td>
+		<td class='statusCell'>
+			<% if (status==Status.PENDING) { %>
+				<div class="progress progress-warning jobProgress">
+					<div class="bar jobProgressMessage">pending</div>
+				</div>
+			<% } else if (status==Status.SUCCESS) { %>
+				<div class="progress progress-success jobProgress">
+					<div class="bar jobProgressMessage">success</div>
+				</div>
+			<% } else if (status==Status.ERROR) { %>
+				<div class="progress progress-danger jobProgress">
+					<div class="bar jobProgressMessage">failed</div>
+				</div>
+			<% } else { %>
+			<div class="progress progress-striped active jobProgress">
+ 					<div class="bar" style="width: <%= job.attr("percent") %>%;"><%= job.attr("percent") %></div>
+			</div>
+			<% } %>
+		</td>
+	</tr>
+	<% }); %>
+</table>
+<% } %>
