@@ -71,6 +71,7 @@ $(document).ready(function(){
 ```javascript
 $(selector).wpsClient(options);
 ```
+
 ### Options
 
 | Option           | Type       | Mandatory | Default          | Description     |
@@ -81,6 +82,11 @@ $(selector).wpsClient(options);
 | **ns**           | Object     | no        | { wps: "http://www.opengis.net/wps/1.0.0", ows:"http://www.opengis.net/ows/1.1"} | The wps and ows namespace urls |
 | **errorHandler** | Function(xhr) | no     | null             | The callback handler when some ajax server request goes bad |
 | **pollingTime**  | Integer    | no        | 2000             | The polling time to check jobs status (in ms)
+
+### Methods
+| Option      | Parameters  | Returns   | Description     |
+| ----------- | ----------- | --------- | --------------: |
+| **reload**  | none        | none      | Used to manually perform a reload of the wps-server (starting by the getCapabilities) |
 
 ### WPS Server and CORS
 Since wps.client performs ajax request to a wps server, you should check any [CORS](https://developer.mozilla.org/en-US/docs/HTTP/Access_control_CORS) issue. If your page using wps.client is in the same server running the wps (same protocol, host and port), all ajax requests are permitted; otherwise it's necessary to add a cors filter in your WPS Server.
