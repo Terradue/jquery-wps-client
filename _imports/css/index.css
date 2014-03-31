@@ -5,7 +5,7 @@ h1 {
 }
 
 body {
-	background-image: url(../images/abstractBackground.jpg);
+	background-image: url(../img/abstractBackground.jpg);
 }
 
 .roundedArea {
@@ -25,7 +25,3 @@ body {
 	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
-
-
-
-
