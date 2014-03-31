@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Wps-Hadoop webclient</title>
+<link type="text/css" rel="stylesheet" href="_imports/css/ui-lightness/jquery-ui.css" />
+<link type="text/css" rel="stylesheet" href="_imports/css/bootstrap.css" />
+<link type="text/css" rel="stylesheet" href="_imports/css/bootstrap-responsive.css" />
+<link type="text/css" rel="stylesheet" href="_imports/css/jquery.loadmask.css" />
+<link type="text/css" rel="stylesheet" href="_imports/css/prettify.css" />
+<link type="text/css" rel="stylesheet" href="_imports/css/index.css" />
+<link type="text/css" rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" />
+
+<script type="text/javascript" src="_imports/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="_imports/js/jquery.multiFieldExtender-2.0.min.js"></script>
+<script type="text/javascript" src="_imports/js/jquery-ui-1.8.9.custom.min.js"></script>
+<script type="text/javascript" src="_imports/js/can.custom.js"></script>
+<script type="text/javascript" src="_imports/js/bootbox.min.js"></script>
+<script type="text/javascript" src="_imports/js/prettify/prettify.js"></script>
+<script type="text/javascript" src="_imports/js/notificator.js"></script>
+<script type="text/javascript" src="_imports/js/jquery.namespace.js"></script>
+<script type="text/javascript" src="_imports/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_imports/js/jquery.loadmask.js"></script>
+
+<link type="text/css" rel="stylesheet" href="css/jquery.wps.client.css" />
+<script type="text/javascript" src="js/jquery.wps.client/js/jquery.wps.client.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	var wpsc = $("#myWpsDiv").wpsClient({
+		libPath: "./",
+		baseUrl: "http://wps01.i-marine.d4science.org/wps/WebProcessingService",
+	});
+});
+</script>
+
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<p class="brand">Web Processing Server WebClient</p>
+			</div>
+		</div>
+	</div>
+	<br /><br /><br /><br />
+	<div class="container-fluid">
+		<p class="roundedArea">
+			Welcome to the Web Processing Server WebClient by Terradue.
+		</p>
+		<div id="myWpsDiv"></div>
+	</div>
+</body>
+</html>
