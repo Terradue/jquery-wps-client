@@ -90,3 +90,4 @@ $(selector).wpsClient(options);
 
 ### WPS Server and CORS
 Since wps.client performs ajax request to a wps server, you should check any [CORS](https://developer.mozilla.org/en-US/docs/HTTP/Access_control_CORS) issue. If your page using wps.client is in the same server running the wps (same protocol, host and port), all ajax requests are permitted; otherwise it's necessary to add a cors filter in your WPS Server.
+>For security reasons, on Chrome and Opera you cannot use XMLHttpRequest to load local files.
