@@ -1,10 +1,12 @@
 jquery.wps.client
 ==
 
-A visual interactive webapp client to wps-hadoop, developed as jQuery plugin.
+A visual interactive webapp client to OGC Web Processing Service developed as jQuery plugin.
 
 ## Dependencies
-** This plugin needs some js library/frameworks (like jquery, twitter bootstrap). Please include these dependencies in your page to use jquery.wps.client. **
+
+** This plugin needs the js library/frameworks listed below. Please include these dependencies in your page to use jquery.wps.client. **
+
 - [jquery](http://jquery.com)
 - [jquery-ui](https://jqueryui.com/)
 - [can.js](http://canjs.com)
@@ -19,7 +21,7 @@ A visual interactive webapp client to wps-hadoop, developed as jQuery plugin.
 
 ## Getting started
 
-Assuming to copy all dependencies to the **path-to-deps** folder and the wps-client library to the **path-to-lib** 
+Assuming all dependencies above are copied in the **path-to-deps** folder and the wps-client library to the **path-to-lib** 
 
 First include all js/css dependencies:
 ```html
