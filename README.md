@@ -5,7 +5,9 @@ A visual interactive webapp client to OGC Web Processing Service developed as jQ
 
 ## Dependencies
 
-** This plugin needs the js library/frameworks listed below. Please include these dependencies in your page to use jquery.wps.client. **
+This plugin needs the js library/frameworks listed below. 
+
+Include these dependencies in your page.
 
 - [jquery](http://jquery.com)
 - [jquery-ui](https://jqueryui.com/)
@@ -21,7 +23,8 @@ A visual interactive webapp client to OGC Web Processing Service developed as jQ
 
 ## Getting started
 
-Assuming all dependencies above are copied in the **path-to-deps** folder and the wps-client library to the **path-to-lib** 
+> Assumption: all dependencies above are copied in the **path-to-deps** folder and the wps-client library in 
+**path-to-lib** 
 
 First include all js/css dependencies:
 ```html
@@ -42,14 +45,15 @@ First include all js/css dependencies:
 <script src="path-to-deps/jquery.loadmask.js"></script>
 ```
 
-Include base script/css *after* the jQuery library (unless you are packaging scripts somehow else):
+Include base script/css *after* the jQuery library: 
 
 ```html
 <script src="/path-to-lib/js/jquery.wps.client.js"></script>
 <link src="/path-to-lib/css/jquery.wps.client.css"></link>
 ```
 
-Add an empty container to your html page:
+Add an empty container to your HTML page:
+
 ```html
 <body>
     ....
@@ -70,6 +74,7 @@ $(document).ready(function(){
 ## Configuration
 
 ### Basic Usage
+
 ```javascript
 $(selector).wpsClient(options);
 ```
@@ -88,8 +93,14 @@ $(selector).wpsClient(options);
 ### Methods
 | Option      | Parameters  | Returns   | Description     |
 | ----------- | ----------- | --------- | --------------: |
-| **reload**  | none        | none      | Used to manually perform a reload of the wps-server (starting by the getCapabilities) |
+| **reload**  | none        | none      | Used to manually reload the WPS getCapabilities request |
 
 ### WPS Server and CORS
-Since wps.client performs ajax request to a wps server, you should check any [CORS](https://developer.mozilla.org/en-US/docs/HTTP/Access_control_CORS) issue. If your page using wps.client is in the same server running the wps (same protocol, host and port), all ajax requests are permitted; otherwise it's necessary to add a cors filter in your WPS Server.
+
+Since the wps.client issues ajax requests to a WPS server, you should check it there are any [CORS](https://developer.mozilla.org/en-US/docs/HTTP/Access_control_CORS) issues. 
+
+If the page using wps.client is hosted in the same server running the OGC WPS server (same protocol, host and port), all ajax requests are allowed; otherwise a cors filter is needed in the WPS Server.
+
 >For security reasons, on Chrome and Opera you cannot use XMLHttpRequest to load local files.
+
+Have fun!
