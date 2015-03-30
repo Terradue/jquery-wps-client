@@ -15,6 +15,7 @@
 */
 
 WpsClient = {
+	version: "1.2.0",
 	defaultOptions: {
 		libPath: "imports/js/jquery.oozie",
 		//baseUrl: MANDATORY
@@ -24,7 +25,7 @@ WpsClient = {
 			ows:"http://www.opengis.net/ows/1.1"
 		},
 		errorHandler: null,
-		pollingTime: 2000,
+		pollingTime: 2000
 	},
 };
 
@@ -269,9 +270,9 @@ $.fn.wpsClient = function(options){
 		$xml.find("DataInputs > Input").each(function(){
 			showAlgorithmField($form, $(this));
 		});
-		var responseDocument = $xml.find("ProcessOutputs > Output").first().findNsURI(options.ns.ows,"Identifier").text();
-		console.log("responseDocument",responseDocument);
-
+		
+		var defaultResponseDocument = showOutputSelector($form, $xml);
+		
 		var $submitButton = $(
 				"<div class='btn-group'>" +
 				"	<a id='runAsync' href='javascript://' class='btn btn-info'>" +
@@ -287,15 +288,15 @@ $.fn.wpsClient = function(options){
 				"	</ul>" +
 				"</div>");
 		$submitButton.find("#runAsync").click(function(){
-			return algorithmSubmit(id, title, responseDocument, false);
+			return algorithmSubmit(id, title, defaultResponseDocument, false);
 		});
 		$submitButton.find("#runSync").click(function(){
-			return algorithmSubmit(id, title, responseDocument, true);
+			return algorithmSubmit(id, title, defaultResponseDocument, true);
 		});
 		
 		var $showUrlButton = $("<a href='#' class='btn'><i class='icon-link'></i>&nbsp;&nbsp;Show WPS Url request</a>").click(function(){
 			var //base = (options.baseUrl.startsWith("http") ? "" : (window.location.origin + window.location.pathname).replace("client2.html","").replace("client.html","")),
-				formData = getDataFromForm(id, responseDocument),
+				formData = getDataFromForm(id, defaultResponseDocument),
 				urlSync = formData.urlSync,
 				urlAsync = formData.urlAsync;
 			bootbox.alert(
@@ -311,7 +312,7 @@ $.fn.wpsClient = function(options){
 			return false;
 		});;
 		var $openUrlButton = $("<a href='#' target='_blank' class='btn'><i class='icon-external-link'></i>&nbsp;&nbsp;Open WPS Url</a>").click(function(){
-			var url = getDataFromForm(id, responseDocument).urlAsync;
+			var url = getDataFromForm(id, defaultResponseDocument).urlAsync;
 			$(this).attr("href", url);
 			return true;
 		});
@@ -320,7 +321,7 @@ $.fn.wpsClient = function(options){
 			.append("&nbsp;&nbsp;")
 			.append($("<div class='btn-group'>").append($showUrlButton).append($openUrlButton))
 			.submit(function(){			
-				return algorithmSubmit(id, title, responseDocument, false);
+				return algorithmSubmit(id, title, defaultResponseDocument, false);
 		});
 	}
 
@@ -376,9 +377,31 @@ $.fn.wpsClient = function(options){
 			});
 		}
 	}
+	
+	function showOutputSelector($form, $xml){
+		var $outputs = $xml.find("ProcessOutputs > Output");
+		var $p = $('<p>Response document </p>');
+		
+		$form.append('<br/><hr/>', $p);
+		
+		var $firstOutput = $($outputs[0]);
+		if ($outputs.length==1)
+			$p.append('<strong>'+$firstOutput.findNsURI(options.ns.ows,'Title').text()+'</strong>');
+		else {
+			var $select = $('<select class="responseDocument">');
+			$.each($outputs, function(){
+				var identifier = $(this).findNsURI(options.ns.ows,'Identifier').text();
+				var title = $(this).findNsURI(options.ns.ows,'Title').text();
+				$select.append('<option value="'+identifier+'">'+title+'</option>');
+			});
+			$p.append($select);
+		}
+		
+		return $firstOutput.findNsURI(options.ns.ows,'Identifier').text();
+	}
 
-	function algorithmSubmit(id, title, responseDocument, isSync) {
-		var formData = getDataFromForm(id, responseDocument),
+	function algorithmSubmit(id, title, defaultResponseDocument, isSync) {
+		var formData = getDataFromForm(id, defaultResponseDocument),
 			url = (isSync ? formData.urlSync : formData.urlAsync),
 			ns = options.ns,
 			job = createJob(id, title, isSync, formData),
@@ -614,12 +637,12 @@ $.fn.wpsClient = function(options){
 		});	
 	}
 
-	function getDataFromForm(id, responseDocument) {
+	function getDataFromForm(id, defaultResponseDocument) {
 		// get all form values as parameters
 		var wpsParameters = "",
 			ris = { parameters: [] };
 		
-		$formArea.find("form > input, form > select").each(function(){
+		$formArea.find('form > input, form > select:not(".responseDocument")').each(function(){
 			var name = $(this).attr("name");
 			//name = name.replace(/^field_/, '');
 			var value = $(this).val();
@@ -645,11 +668,11 @@ $.fn.wpsClient = function(options){
 			});
 			ris.parameters.push( { name: name, value: values } );
 		});
-
+		
 		ris.urlSync = options.baseUrl + "?service=wps&version="+options.wpsVersion +
 		"&request=Execute&identifier="+id +
 		"&dataInputs="+wpsParameters +
-		"&ResponseDocument="+responseDocument;
+		"&ResponseDocument="+ ($formArea.find('select.responseDocument').val() || defaultResponseDocument);
 		
 		ris.urlAsync = ris.urlSync + "&storeExecuteResponse=true&status=true";
 
