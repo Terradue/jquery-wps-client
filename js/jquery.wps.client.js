@@ -269,7 +269,7 @@ $.fn.wpsClient = function(options){
 		$xml.find("DataInputs > Input").each(function(){
 			showAlgorithmField($form, $(this));
 		});
-		var responseDocument = $xml.find("ProcessOutputs > Output").first().findNsURI(options.ns.ows,"Title").text();
+		var responseDocument = $xml.find("ProcessOutputs > Output").first().findNsURI(options.ns.ows,"Identifier").text();
 		console.log("responseDocument",responseDocument);
 
 		var $submitButton = $(
