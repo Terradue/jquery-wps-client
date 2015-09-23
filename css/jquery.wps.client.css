@@ -30,8 +30,12 @@
 	margin-top:10px;
 }
 
-.algorithmFormArea input {
+.algorithmFormArea input[type='text'] {
 	width: 400px;
+}
+
+.algorithmFormArea input.maxSize[type='text'] {
+	width: 90%;
 }
 
 .addMoreFields {
