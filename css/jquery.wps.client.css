@@ -30,8 +30,12 @@
 	margin-top:10px;
 }
 
-.algorithmFormArea input {
+.algorithmFormArea input[type='text'] {
 	width: 400px;
+}
+
+.algorithmFormArea input.maxSize[type='text'] {
+	width: 90%;
 }
 
 .addMoreFields {
@@ -50,6 +54,11 @@
 
 .fileUrl {
 	margin-right: 20px;
+}
+
+.selectJob {
+    display: inline-block;
+    line-height: 15px;
 }
 
 .fileUrl:hover {
@@ -129,3 +138,12 @@
 	color:black;
 }
 
+/* PAGINATION */
+.pagination {
+	margin-top: 6px;
+	text-align: center;
+}
+.pagination ul > li > a, .pagination ul > li > span{
+	padding: 2px 6px;
+	font-size: 12px;
+}

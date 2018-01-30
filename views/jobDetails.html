@@ -1,0 +1,50 @@
+{{#currentJob}}
+
+	<div data-active="true">
+		<h3>Job <b>{{jobName}}</b></h3>
+		<h4>Job Info</h4>
+		<dl class='dl-horizontal'>
+			<dt>Algorithm Name</dt><dd>{{title}}</dd>
+			<dt>Started at</dt><dd>{{time}}</dd>
+			<dt>Status/Result Location</dt>
+			<dd>
+				{{#if statusLocation}}
+					<a href="{{statusLocation}}" target="_blank"><i class="icon-external-link"></i> {{statusLocation}}</a>
+				{{else}}
+					none
+				{{/if}}
+			</dd>
+			<dt>Status</dt>
+			<dd>
+				{{#ifEquals status "TO_CHECK"}}
+					to check
+				{{/ifEquals}}
+				{{#ifEquals status "TO_REMOVE"}}
+					to remove
+				{{/ifEquals}}
+				{{#ifEquals status "PENDING"}}
+					<span class="label label-warning">Pending</span>
+				{{/ifEquals}}
+				{{#ifEquals status "SUCCESS"}}
+					<span class="label label-success">Success</span>
+				{{/ifEquals}}
+				{{#ifEquals status "ERROR"}}
+					<span class="label label-important">Failed</span>
+				{{/ifEquals}}
+				{{#ifEquals status "RUNNING"}}
+					<span class="label label-warning">Running</span>&nbsp;&nbsp;&nbsp;<div class='wpsClient-bigPreloader'></div></p>
+					</br>
+					<small class="percents" style="float: left; margin-right: 5px;">{{percent}}%</small>
+					<div class="progress progress-striped active jobProgress" style="width:300px">
+								<div class="bar" style="width: {{percent}}%;">{{percent}}</div>
+					</div>
+				{{/ifEquals}}
+			
+			</dd>
+		</dl>
+	</div>
+
+
+{{else}}
+	NO CURRENT JOB!</BR>
+{{/if}}
