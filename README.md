@@ -1,6 +1,6 @@
 jquery.wps.client
 ==
-
+Version 1.2.1
 A visual interactive webapp client to OGC Web Processing Service developed as jQuery plugin.
 
 ## Dependencies
