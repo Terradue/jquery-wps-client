@@ -60,28 +60,9 @@ com.terradue.wps_hadoop.processes.ird.indicator.IndicatorI1
 ;(function($){
 	
 	$.fn.findNsURI = function(namespaceURI, tagName){
-		var $xml = $(this);
-
-		// check if the browser is chrome
-		if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1){
-			return $xml.find(tagName).filter(function() {
-				//console.log("TAG",this);
-				//console.log("--tagname", this.tagName, (this.tagName == namespace+":"+tagName));
-				// check the tagName (tagName===<ns>:<tag>
-				return (this.namespaceURI == namespaceURI);
-			});
-		} 
-		
-		// other browsers
-		else {
-			return $xml.find("*").filter(function(){
-				//console.log("TAG",this);
-				//console.log("--tagname", this.tagName, (this.tagName == namespace+":"+tagName));
-				// check the tagName (tagName===<ns>:<tag>
-				return (this.localName==tagName && this.namespaceURI==namespaceURI);
-			});
-		}
-
+		return $(this).find("*").filter(function(){
+			return (this.localName==tagName && this.namespaceURI==namespaceURI);
+		});
 	};
 	
 	$.fn.findNs = function(namespace, tagName){
@@ -96,7 +77,7 @@ com.terradue.wps_hadoop.processes.ird.indicator.IndicatorI1
 		
 		// check if the browser is chrome
 		if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1){
-			return $xml.find(tagName).filter(function() {
+			return $xml.find("*").filter(function() {
 				// check the tagName (tagName===<ns>:<tag>
 				return (this.tagName == namespace+":"+tagName);
 			});
@@ -108,5 +89,28 @@ com.terradue.wps_hadoop.processes.ird.indicator.IndicatorI1
 		
 	};
 	
+	$.fn.childrenNsURI = function(namespaceURI, tagName){
+		var $xml = $(this);
+
+		return $xml.children().filter(function(){
+			return (this.localName==tagName && this.namespaceURI==namespaceURI);
+		});
+
+	};
+	
+	$.fn.childrenNs = function(namespace, tagName){
+		if (tagName==null){
+			var ar = namespace.split(":");
+			if (ar.length==0) return;
+			tagName=ar[1];
+			namespace=ar[0];
+		}
+		
+		var $xml = $(this);
+		
+		return $xml.children(namespace+"\\:"+tagName);
+		
+	};
+
 })(jQuery);
 
