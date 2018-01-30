@@ -56,6 +56,11 @@
 	margin-right: 20px;
 }
 
+.selectJob {
+    display: inline-block;
+    line-height: 15px;
+}
+
 .fileUrl:hover {
 	background-color: #d9e2f8;
 }
@@ -133,3 +138,12 @@
 	color:black;
 }
 
+/* PAGINATION */
+.pagination {
+	margin-top: 6px;
+	text-align: center;
+}
+.pagination ul > li > a, .pagination ul > li > span{
+	padding: 2px 6px;
+	font-size: 12px;
+}

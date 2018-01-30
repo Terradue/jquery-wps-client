@@ -28,28 +28,28 @@ Include these dependencies in your page.
 
 First include all js/css dependencies:
 ```html
-<link href="path-to-deps/ui-lightness/jquery-ui.css" rel="stylesheet" />
-<link href="path-to-deps/bootstrap.css" rel="stylesheet" />
-<link href="path-to-deps/jquery.loadmask.css" rel="stylesheet" />
-<link href="path-to-deps/prettify.css" rel="stylesheet" />
-<link href="path-to-deps/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+<link href="path-to-deps/.../ui-lightness/jquery-ui.css" rel="stylesheet" />
+<link href="path-to-deps/.../bootstrap.css" rel="stylesheet" />
+<link href="path-to-deps/.../jquery.loadmask.css" rel="stylesheet" />
+<link href="path-to-deps/.../prettify.css" rel="stylesheet" />
+<link href="path-to-deps/.../font-awesome/css/font-awesome.min.css" rel="stylesheet" />
 
-<script src="path-to-deps/jquery-1.9.1.min.js"></script>
-<script src="path-to-deps/jquery-ui-1.8.9.custom.min.js"></script>
-<script src="path-to-deps/jquery.multiFieldExtender-2.0.min.js"></script>
-<script src="path-to-deps/can.custom.js"></script>
-<script src="path-to-deps/bootbox.min.js"></script>
-<script src="path-to-deps/prettify/prettify.js"></script>
-<script src="path-to-deps/jquery.namespace.js"></script>
-<script src="path-to-deps/bootstrap.min.js"></script>
-<script src="path-to-deps/jquery.loadmask.js"></script>
+<script src="path-to-deps/.../jquery-1.9.1.min.js"></script>
+<script src="path-to-deps/.../jquery-ui-1.8.9.custom.min.js"></script>
+<script src="path-to-deps/.../jquery.multiFieldExtender-2.0.min.js"></script>
+<script src="path-to-deps/.../can.custom.js"></script>
+<script src="path-to-deps/.../bootbox.min.js"></script>
+<script src="path-to-deps/.../prettify/prettify.js"></script>
+<script src="path-to-deps/.../jquery.namespace.js"></script>
+<script src="path-to-deps/.../bootstrap.min.js"></script>
+<script src="path-to-deps/.../jquery.loadmask.js"></script>
 ```
 
 Include base script/css *after* the jQuery library: 
 
 ```html
 <script src="/path-to-lib/js/jquery.wps.client.js"></script>
-<link src="/path-to-lib/css/jquery.wps.client.css"></link>
+<link href="/path-to-lib/css/jquery.wps.client.css"></link>
 ```
 
 Add an empty container to your HTML page:
@@ -89,6 +89,7 @@ $(selector).wpsClient(options);
 | **ns**           | Object     | no        | { wps: "http://www.opengis.net/wps/1.0.0", ows:"http://www.opengis.net/ows/1.1"} | The wps and ows namespace urls |
 | **errorHandler** | Function(xhr) | no     | null             | The callback handler when some ajax server request goes bad |
 | **pollingTime**  | Integer    | no        | 2000             | The polling time to check jobs status (in ms)
+| **joblistServiceUrl** | String | no     | null             | Url of a service which returns a list of jobs, useful to have persistence of previously runned jobs. The list must be in json format, structured as a Key/Value list, in which Key is the job name and Value is the job status url.  |
 
 ### Methods
 | Option      | Parameters  | Returns   | Description     |
